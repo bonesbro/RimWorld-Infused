@@ -79,7 +79,7 @@ namespace Infused
 				msg.Append( parent.Stuff.LabelAsStuff + " " );
 			}
 			msg.Append( parent.def.label );
-			Messages.Message( ResourceBank.StringInfusionMessage.Translate( msg ), MessageSound.Silent );
+			Messages.Message( ResourceBank.StringInfusionMessage.Translate( msg ), new RimWorld.Planet.GlobalTargetInfo(parent), MessageSound.Silent );
 			InfusionSound.PlayOneShotOnCamera();
 
 			MoteMaker.ThrowText( parent.Position.ToVector3Shifted(), this.parent.Map, ResourceBank.StringInfused,
@@ -88,9 +88,9 @@ namespace Infused
 			isNew = false;
 		}
 
-		public override void PostSpawnSetup()
+		public override void PostSpawnSetup (bool respawningAfterLoad)
 		{
-			base.PostSpawnSetup();
+			base.PostSpawnSetup(respawningAfterLoad);
 
 			if (Infused) {
 				//When there is only suffix
@@ -137,8 +137,8 @@ namespace Infused
 			if (suffix != null)
 				suffixDefName = suffix.defName;
 
-			Scribe_Values.LookValue (ref prefixDefName, "prefix", null);
-			Scribe_Values.LookValue (ref suffixDefName, "suffix", null);
+			Scribe_Values.Look (ref prefixDefName, "prefix", null);
+			Scribe_Values.Look (ref suffixDefName, "suffix", null);
 
 			if (prefix == null)
 				prefix = Def.Named(prefixDefName);

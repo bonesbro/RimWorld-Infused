@@ -32,11 +32,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Steam\steamapps\common\RimWorld\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Steam\steamapps\common\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>..\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -47,9 +51,6 @@
     <Compile Include="Gens\GenInfusionColor.cs" />
     <Compile Include="Gens\MathUtility.cs" />
     <Compile Include="MapComponent\MapComponent_InfusionManager.cs" />
-    <Compile Include="ModInitializers\Detours.cs" />
-    <Compile Include="ModInitializers\ModDetour.cs" />
-    <Compile Include="ModInitializers\ModInjector.cs" />
     <Compile Include="StatParts\StatPart_InfusionModifier.cs" />
     <Compile Include="UI\ITab_Infusion.cs" />
     <Compile Include="InfusionSet.cs" />
@@ -58,16 +59,10 @@
     <Compile Include="Defs\Def.cs" />
     <Compile Include="Gens\GenInfusionText.cs" />
     <Compile Include="MapComponent\InfusionLabelManager.cs" />
-    <Compile Include="ModInitializers\MapComponentInjector.cs" />
+    <Compile Include="ModInitializers\InfusedMod.cs" />
+    <Compile Include="ModInitializers\CompQualityPatch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <Deployment.LinuxDeployData generatePcFile="False" />
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Comp\" />
     <Folder Include="Gens\" />
